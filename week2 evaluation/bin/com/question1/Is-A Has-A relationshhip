@@ -1,0 +1,122 @@
+
+1. "Is-A" relationship
+Dog "Is-A" animal.
+Mango "Is-A" fruit.
+In this kind of relationship there is a parent and one or more child.
+in this relationship we extend child class from the parent class.
+all the characteristics of parent will be inherited by child class
+for eg. 
+
+public class Animal {
+	String voice;
+	
+	void sound() {
+		System.out.println("Animal has voice");
+	}
+	
+	void legs(){
+		System.out.println("Animal has legs");
+	}
+}
+
+//Cat Is-A animal
+public class Cat extends Animal{
+	String food;
+	
+	@Override
+	void sound() {
+		// TODO Auto-generated method stub
+		System.out.println("Cat does Meowww");;
+	}
+
+	void eat() {
+		System.out.println("Cat eats fish");
+	}
+	
+}
+
+public class Demo{
+	public static void main(String[] args) {
+		Cat cat = new Cat();
+		cat.sound()l; //prints overriden sound
+		cat.legs(); //executes legs method from parent Animal class.
+	}
+}
+
+
+2."Has-A" relationship;
+Car Has-A engine.
+Man Has-A brain.
+These are examples of has-a relationship. In  this type of relation, 
+One class has properties of other class. But vice versa may not be true. 
+For example car has a engine but engine can not have car inside it. 
+In has a relationship the superior class can use other class as it's one of the
+fields. like car will have an instance variable of type "Engine" as engine;
+We can set values for Engine object. and this engine object will be used by car
+as one of it's variable.
+
+public class Car{
+	
+	private String name;
+	// Car Has-A engine
+	private Engine engine;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Engine getEngine() {
+		return engine;
+	}
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
+	
+	public void askName() {
+		System.out.println("I'm car");
+	}
+
+}
+
+public class Engine{
+	private String type;
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+}
+
+public class Main{
+	public static void main(String[] args) {
+		Engine engine = new Engine();
+		engine.setType("Turbo");
+		
+		Car car = new Car();
+		car.setName("TATA");
+		car.setEngine(engine);
+		
+		System.out.println("Car info :");
+		System.out.println("Name :"+ car.getName());
+		System.out.println("Engine :"+ car.getEngine());
+	}
+}
+
+
+3.Access Modifieres.
+public,private,protected,default are the types of access modifieres.
+
+public modifier : allows access of those class,methods,variables to all packages, all classes.
+private modifier : allows access of that method or variable
+					 only inside that class. we dont set class as private 
+default : allows access of those class,methods,variables to only classes and methods present in
+			that particular package.
+protected : similar as default but we can access those methods,variables,class
+			outside package only if the class is subclass from protected class.
+
